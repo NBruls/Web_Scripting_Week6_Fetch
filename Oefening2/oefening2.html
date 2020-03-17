@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Oefening2</title>
 </head>
 <body>
-
+<div style="border-bottom: 1px solid black; border-top: 1px solid black; width: 100%;">
+    <br/>
+    <label for="select_person" style="width: 150px; float: left; clear: both">Selecteer persoon:</label><select id="select_person" style="float: left">
+    </select><br/><br/>
+    <button id="button_get_friends">Zoek vrienden</button><br/><br/>
+    <button id="post_person">post person</button><br/><br/>
+    <label for="input_name">name:</label><input id="input_name" type="text">
+</div>
+<div id="div_output"></div>
+<script src="assets/js/fetchFriends.js"></script>
 </body>
 </html>

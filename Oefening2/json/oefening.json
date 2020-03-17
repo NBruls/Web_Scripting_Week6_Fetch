@@ -3,17 +3,29 @@
     {
       "id": 1,
       "name": "sofie",
-      "friends": [2]
+      "friends": [
+        2
+      ]
     },
     {
       "id": 2,
       "name": "tim",
-      "friends": [1]
+      "friends": [
+        1
+      ]
     },
     {
       "id": 3,
       "name": "geert",
       "friends": []
+    },
+    {
+      "name": "dirk",
+      "id": 4
+    },
+    {
+      "name": "dirk",
+      "id": 5
     }
   ]
 }

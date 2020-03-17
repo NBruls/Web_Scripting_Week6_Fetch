@@ -1,4 +1,4 @@
-window.addEventListener("load", loaded);
+ window.addEventListener("load", loaded);
 
 function loaded() {
     let buttonGetAllPersons = document.getElementById('button_get_all_persons');
@@ -97,7 +97,7 @@ function handlePostPerson() {
     let url = 'http://localhost:3000/persons/';
     let output = document.getElementById("div_output");
     let name = document.getElementById("input_name").value;
-    let person = {name: name};
+    let person = {name: name, friends: []};
     makeElementEmpty(output);
     fetch(url,
         {
