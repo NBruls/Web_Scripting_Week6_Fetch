@@ -6,9 +6,14 @@
 </head>
 <body>
 	<button id="button_get_all_persons">get all persons</button><br/><br/>
-	<button id="button_get_person">get person</button>id: <input type="text" id="txt_id"/><br/><br/>
-	<button id="button_get_by_name">get person</button>name: <input type="text" id="txt_name"><br/><br/>
-	<button id="button_post_person">post</button> name: <input type="text" id="txt_new_name"/><br/><br/>
+	<button id="button_get_by_id">get person by id</button><br/><br/>
+	<button id="button_get_by_name">get persons by name</button><br/><br/>
+	<button id="button_post_person">post person</button><br/><br/>
+	<button id="button_put_person">put person</button><br/><br/>
+	<div style="border-top: 1px solid black; border-bottom: 1px solid black; width: 100%;">
+		<br/><label for="input_id" style="width: 50px; float: left; clear: both;">id:</label><input id="input_id" type="text" style="float: left"/><br/><br/>
+		<label for="input_name" style="width: 50px; float: left; clear: both;">name:</label><input id="input_name" type="text" style="float: left"/><br/><br/>
+	</div>
 	<div id="div_output"></div>
 	<script src="assets/js/fetchPersons.js"></script>
 </body>

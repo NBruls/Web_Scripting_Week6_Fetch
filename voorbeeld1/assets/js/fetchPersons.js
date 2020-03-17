@@ -3,12 +3,14 @@ window.addEventListener("load", loaded);
 function loaded() {
     let buttonGetAllPersons = document.getElementById('button_get_all_persons');
     buttonGetAllPersons.addEventListener("click", handleGetAllPersons);
-    let buttonGetPerson = document.getElementById('button_get_person');
-    buttonGetPerson.addEventListener("click", handleGetPerson);
+    let buttonGetById = document.getElementById('button_get_by_id');
+    buttonGetById.addEventListener("click", handleGetById);
     let buttonGetByName = document.getElementById("button_get_by_name");
     buttonGetByName.addEventListener("click", handleGetByName);
     let buttonPost = document.getElementById('button_post_person');
     buttonPost.addEventListener("click", handlePostPerson);
+    let buttonPut = document.getElementById("button_put_person");
+    buttonPut.addEventListener("click", handlePutPerson);
 }
 
 
@@ -38,9 +40,9 @@ function handleGetAllPersons() {
 }
 
 
-function handleGetPerson() {
+function handleGetById() {
     let url = 'http://localhost:3000/persons/';
-    let id = document.getElementById("txt_id").value;
+    let id = document.getElementById("input_id").value;
     let output = document.getElementById("div_output");
     makeElementEmpty(output);
     if (id.trim()!=''){
@@ -67,7 +69,7 @@ function handleGetPerson() {
 function handleGetByName() {
     let url = 'http://localhost:3000/persons/?name=';
     let output = document.getElementById("div_output");
-    let name = document.getElementById("txt_name").value;
+    let name = document.getElementById("input_name").value;
     makeElementEmpty(output);
     fetch(url + name)
         .then((response) => {
@@ -94,7 +96,7 @@ function handleGetByName() {
 function handlePostPerson() {
     let url = 'http://localhost:3000/persons/';
     let output = document.getElementById("div_output");
-    let name = document.getElementById("txt_new_name").value;
+    let name = document.getElementById("input_name").value;
     let person = {name: name};
     makeElementEmpty(output);
     fetch(url,
@@ -122,6 +124,42 @@ function handlePostPerson() {
         .catch((error) => {
             output.appendChild(document.createTextNode(error));
         });
+}
+
+function handlePutPerson() {
+    let url = 'http://localhost:3000/persons/';
+    let output = document.getElementById("div_output");
+    let name = document.getElementById("input_name").value;
+    let id = document.getElementById("input_id").value;
+    let person = {name: name};
+    makeElementEmpty(output);
+    if (id.trim() != '') {
+        fetch(url + id,
+            {
+                method: "PUT",
+                body: JSON.stringify(person),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response) =>{
+                if (response.status == 200) {
+                    return response.json();
+                } else {
+                    throw `error with status ${response.status}`;
+                }
+            })
+            .then((person) => {
+                let data = [];
+                data.push([person.id, person.name]);
+                let table = makeTable(data);
+                output.appendChild(table);
+            })
+            .catch((error) => {
+                output.appendChild(document.createTextNode(error));
+            });
+    }
 }
 
 
